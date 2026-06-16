@@ -61,7 +61,8 @@
 
   .display-xl { font-size: clamp(32px, 4.5vw, 64px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--navy); }
   .hero .display-xl { color: white; }
-  .hero .eyebrow { color: var(--amber-soft); }
+  .hero .eyebrow { color: var(--amber-soft); font-size: 15px; letter-spacing: 2.6px; }
+  .hero .eyebrow::before { width: 40px; }
   .display-lg { font-size: clamp(32px, 5vw, 64px); font-weight: 600; line-height: 1.05; letter-spacing: -0.03em; }
   .display-md { font-size: clamp(26px, 3.5vw, 44px); font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; }
 
@@ -133,6 +134,22 @@
   .hero .btn-secondary:hover { background: white; color: var(--navy); border-color: white; }
   .arrow-icon { transition: transform 0.25s; display: inline-block; }
   .btn:hover .arrow-icon { transform: translateX(4px); }
+  /* High-emphasis CTA variant (client p.14) */
+  .btn-cta-strong {
+    padding: 22px 44px;
+    font-size: 17.5px;
+    font-weight: 700;
+    box-shadow: 0 12px 34px rgba(255, 107, 26, 0.38);
+    animation: cta-pulse 2.6s ease-in-out infinite;
+  }
+  .btn-cta-strong:hover { box-shadow: 0 16px 40px rgba(255, 107, 26, 0.5); }
+  @keyframes cta-pulse {
+    0%, 100% { transform: translateY(0); box-shadow: 0 12px 34px rgba(255, 107, 26, 0.38); }
+    50%      { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(255, 107, 26, 0.52); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-cta-strong { animation: none; }
+  }
 
   /* ============ HERO ============ */
   .hero {
@@ -284,8 +301,11 @@
     border: none;
   }
   .hv-side-card .hv-tag { color: var(--charcoal-soft); margin-bottom: 8px; }
-  .hv-side-card.bottom .hv-tag { color: rgba(255,255,255,0.85); }
+  .hv-side-card.bottom .hv-tag { color: rgba(255,255,255,0.9); font-size: 12px; letter-spacing: 2.4px; margin-bottom: 10px; }
   .hv-side-card p { font-size: 13px; font-weight: 600; line-height: 1.35; }
+  /* 'The Premise' card — bigger / stands out more (client p.2) */
+  .hv-side-card.bottom { width: 248px; padding: 20px 22px; box-shadow: 0 20px 48px rgba(255,107,26,0.28); }
+  .hv-side-card.bottom p { font-size: 15px; line-height: 1.4; }
 
   /* ============ INTRO ============ */
   .intro {
@@ -322,8 +342,8 @@
     max-width: 760px;
   }
   .intro p:first-of-type {
-    font-size: clamp(24px, 2.4vw, 34px);
-    color: white;
+    font-size: clamp(25px, 2.5vw, 36px);
+    color: var(--amber-soft);
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.25;
@@ -396,6 +416,24 @@
       0 16px 40px rgba(0,0,0,0.4),
       0 0 60px rgba(255, 107, 26, 0.12);
   }
+  /* Card 05 — the most emotional card, given a touch more presence (client p.4) */
+  .pain-list li:nth-child(5) {
+    transform: scale(1.03);
+    box-shadow:
+      0 22px 52px rgba(0,0,0,0.5),
+      0 0 80px rgba(255, 107, 26, 0.30);
+  }
+  .pain-list li:nth-child(5) .li-text {
+    box-shadow: inset 0 0 0 1px rgba(255, 107, 26, 0.35);
+  }
+  .pain-list li:nth-child(5).is-colored {
+    box-shadow:
+      0 22px 52px rgba(0,0,0,0.5),
+      0 0 100px rgba(255, 107, 26, 0.42);
+  }
+  .pain-list li:nth-child(5):hover {
+    transform: scale(1.03) translateY(-6px);
+  }
   .pain-list li:nth-child(1) {
     background-image: url('https://res.cloudinary.com/dcuswyfur/image/upload/v1778588679/CardBackground1_cz7fop.png');
   }
@@ -416,14 +454,14 @@
   .pain-list li .li-text {
     background: linear-gradient(165deg, #0a1f44 0%, #060f24 100%);
     border-radius: 0;
-    padding: 36px 32px 32px;
-    font-size: 16px;
-    line-height: 1.55;
+    padding: 42px 36px 40px;
+    font-size: 17.5px;
+    line-height: 1.62;
     color: rgba(255,255,255,0.88);
     display: block;
     width: 100%;
     position: relative;
-    min-height: 280px;
+    min-height: 300px;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
     text-align: center;
   }
@@ -453,8 +491,8 @@
       0 0 100px rgba(255, 107, 26, 0.3);
   }
   .pain-list li .li-text {
-    font-size: 16px;
-    line-height: 1.55;
+    font-size: 17.5px;
+    line-height: 1.62;
     color: rgba(255,255,255,0.85);
     display: block;
     position: relative;
@@ -472,19 +510,22 @@
   }
 
   .pain-quote {
-    margin: 80px 0 40px;
-    padding: 56px 0;
+    margin: 96px 0 48px;
+    padding: 68px 0;
     border-top: 2px solid var(--orange);
     border-bottom: 1px solid rgba(255,255,255,0.12);
     text-align: center;
   }
   .pain-quote-text {
-    font-size: clamp(24px, 3vw, 38px);
+    font-size: clamp(26px, 3.1vw, 40px);
     font-weight: 600;
-    line-height: 1.25;
+    line-height: 1.32;
     color: white;
     letter-spacing: -0.02em;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .pain-quote-text::before {
     content: '"';
@@ -502,19 +543,20 @@
     text-transform: uppercase;
     color: var(--amber);
   }
-  .pain-closer { max-width: 800px; margin: 40px auto 0; text-align: center; }
+  .pain-closer { max-width: 860px; margin: 56px auto 0; text-align: center; }
   .pain-closer p {
-    font-size: 18px;
-    line-height: 1.65;
-    color: rgba(255,255,255,0.78);
-    margin-bottom: 18px;
+    font-size: 19.5px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 26px;
   }
   .pain-closer p.emphasis {
-    font-size: 24px;
+    font-size: 26px;
+    line-height: 1.45;
     color: white;
     font-weight: 600;
     letter-spacing: -0.015em;
-    margin-top: 28px;
+    margin-top: 38px;
   }
   .pain-closer p.emphasis .accent { color: var(--orange-bright); font-style: italic; }
 
@@ -550,7 +592,7 @@
   .founder-portrait {
     aspect-ratio: 4/5;
     background:
-      url('https://res.cloudinary.com/dcuswyfur/image/upload/v1778842300/AboutImage_xtbhup.png') center top / cover no-repeat;
+      url('https://res.cloudinary.com/dcuswyfur/image/upload/v1781095527/NewGerardoImage_fonqgb.webp') center top / cover no-repeat;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -560,6 +602,16 @@
   }
   .founder-portrait::before {
     content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      transparent 55%,
+      rgba(10, 31, 68, 0.45) 80%,
+      rgba(6, 15, 36, 0.85) 100%
+    );
   }
   .founder-portrait::after {
     content: '';
@@ -654,12 +706,12 @@
     font-family: Georgia, serif;
   }
   .big-quote-text {
-    font-size: clamp(22px, 2.6vw, 32px);
-    line-height: 1.35;
+    font-size: clamp(27px, 3.2vw, 41px);
+    line-height: 1.3;
     color: var(--navy);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 26px;
     position: relative;
   }
   .big-quote-author {
@@ -796,19 +848,20 @@
   }
   /* Study text — collapsed by default, expands on hover */
   .stat-cell p {
-    font-size: 13px;
-    line-height: 1.55;
-    color: rgba(255,255,255,0.55);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--amber-soft);
+    font-weight: 500;
     max-height: 0;
     opacity: 0;
     margin: 0;
     transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin-top 0.4s ease;
     overflow: hidden;
     border-left: 2px solid var(--orange);
-    padding-left: 14px;
+    padding-left: 16px;
   }
   .stat-cell:hover p {
-    max-height: 240px;
+    max-height: 320px;
     opacity: 1;
     margin-top: 0;
   }
@@ -990,13 +1043,13 @@
   }
   .framework-closer {
     margin-top: 60px;
-    padding: 40px 0;
-    border-top: 1px solid var(--line);
-    font-size: 19px;
-    line-height: 1.55;
+    padding: 44px 0 8px;
+    border-top: 2px solid var(--orange);
+    font-size: clamp(23px, 2.5vw, 31px);
+    line-height: 1.32;
     color: var(--navy);
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   /* ============ OUTCOMES (DARK) ============ */
@@ -1089,7 +1142,7 @@
     border-top: 1px solid rgba(255,255,255,0.15);
   }
   .outcomes-col {
-    padding: 56px 48px;
+    padding: 64px 54px;
     border-right: 1px solid rgba(255,255,255,0.15);
   }
   .outcomes-col:last-child { border-right: none; }
@@ -1103,12 +1156,12 @@
     border-bottom: 2px solid var(--orange);
     display: inline-block;
   }
-  .outcomes-col ul { list-style: none; display: grid; gap: 22px; }
+  .outcomes-col ul { list-style: none; display: grid; gap: 28px; }
   .outcomes-col li {
-    font-size: 16px;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.78);
-    padding-left: 28px;
+    font-size: 17.5px;
+    line-height: 1.68;
+    color: rgba(255,255,255,0.82);
+    padding-left: 30px;
     position: relative;
   }
   .outcomes-col li::before {
@@ -1139,6 +1192,56 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--orange-bright);
+  }
+
+  /* Life-impact feature — image paired with the closing quote (client p.10) */
+  .outcomes-life {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: stretch;
+    border: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+  .outcomes-life-image {
+    position: relative;
+    min-height: 460px;
+    background: url('https://res.cloudinary.com/dcuswyfur/image/upload/v1781096151/hf_20260610_125433_47f1c566-2558-41c5-b77a-18bf4470af69_tlairs.png') center center / cover no-repeat;
+  }
+  .outcomes-life-image::after {
+    content: '';
+    position: absolute;
+    right: -70px; bottom: -70px;
+    width: 260px; height: 260px;
+    border: 2px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .outcomes-life-image .life-tag {
+    position: absolute;
+    top: 28px; left: 28px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    background: rgba(6,15,36,0.35);
+    padding: 7px 12px;
+    backdrop-filter: blur(6px);
+  }
+  .outcomes-life-content {
+    padding: 64px 56px;
+    background: rgba(255,255,255,0.04);
+    border-left: 4px solid var(--orange);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 1024px) {
+    .outcomes-life { grid-template-columns: 1fr; }
+    .outcomes-life-image { min-height: 280px; }
+    .outcomes-life-content { padding: 44px 32px; }
   }
 
   /* ============ PATHWAY ============ */
@@ -1441,10 +1544,15 @@
     text-align: center;
   }
   .final-bridge p {
-    font-size: 17px;
-    color: var(--charcoal);
-    margin-bottom: 20px;
+    font-size: clamp(20px, 2.1vw, 25px);
+    color: var(--navy);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    max-width: 720px;
+    margin: 0 auto 26px;
+    line-height: 1.4;
   }
+  .final-bridge p .accent { color: var(--orange); font-weight: 700; }
   .closing-line {
     margin-top: 80px;
     padding: 50px;
@@ -1461,7 +1569,9 @@
   /* ============ INSIGHTS / IMAGE CARDS (Accenture-style) ============ */
   .insights {
     padding: 140px 0;
-    background: white;
+    background:
+      linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.55)),
+      url('https://res.cloudinary.com/dcuswyfur/image/upload/v1781096825/hf_20260610_130556_b13714dd-f05b-4a1c-bf41-4e7b4eef9612_e6lrwj.png') center center / cover no-repeat;
     position: relative;
   }
   .insights h2 .accent { color: var(--orange); font-style: italic; font-weight: 500; }
@@ -1572,7 +1682,7 @@
 
   /* ============ EDITORIAL IMAGE CARD (full bleed within section) ============ */
   .editorial-card {
-    margin: 80px 0 0;
+    margin: 0;
     aspect-ratio: 21/9;
     background:
       linear-gradient(rgba(6, 15, 36, 0.6), rgba(6, 15, 36, 0.6)),
@@ -1838,14 +1948,14 @@
                 </div>
                 <div class="hv-stat">
                   <div class="hv-stat-num">5%</div>
-                  <div class="hv-stat-label">See real AI returns · BCG 2025</div>
+                  <div class="hv-stat-label">Of firms see real AI returns · BCG 2025</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="hv-side-card top">
             <div class="hv-tag">The Layers</div>
-            <p>Life Vision · Business Vision · AI-Driven System Architecture · AI Tools</p>
+            <p>Life Vision<br>Business Vision<br>AI-Driven System Architecture<br>AI Tools</p>
           </div>
           <div class="hv-side-card bottom">
             <div class="hv-tag">The Premise</div>
@@ -2112,9 +2222,12 @@
         </div>
       </div>
 
-      <div class="outcomes-quote">
-        <p class="outcomes-quote-text">The real return on investment in business isn't just revenue. It's the return on your time, your freedom, and the ability to finally run a business that aligns with your&nbsp;life.</p>
-        <p class="outcomes-quote-author">— Gerardo Chairez</p>
+      <div class="outcomes-life">
+        <div class="outcomes-life-image"></div>
+        <div class="outcomes-life-content">
+          <p class="outcomes-quote-text">The real return on investment in business isn't just revenue. It's the return on your time, your freedom, and the ability to finally run a business that aligns with your&nbsp;life.</p>
+          <p class="outcomes-quote-author">— Gerardo Chairez</p>
+        </div>
       </div>
     </div>
   </section>
@@ -2122,62 +2235,6 @@
   <!-- ============ INSIGHTS / IMAGE CARDS ============ -->
   <section class="insights">
     <div class="container">
-      <span class="eyebrow">The Foundation</span>
-      <h2 class="display-lg blur-reveal" style="margin-top: 28px;">
-        Four layers.<br><span class="accent">One operating system for your&nbsp;business.</span>
-      </h2>
-      <p class="insights-intro">
-        The VAISA Framework is built on four sequential layers. Each one must be in place before the next can deliver real value.
-      </p>
-
-      <div class="insights-grid">
-
-        <div class="insight-card bg-dark" data-video-card>
-          <div class="insight-card-content">
-            <span class="insight-tag">Layer 01</span>
-            <h3>Life Vision</h3>
-          </div>
-          <div class="insight-image">
-            <video class="insight-video" src="https://res.cloudinary.com/dcuswyfur/video/upload/v1778599672/CardVideo1_ttflza.mp4"
-              muted playsinline preload="auto"></video>
-          </div>
-        </div>
-
-        <div class="insight-card bg-dark" data-video-card>
-          <div class="insight-card-content">
-            <span class="insight-tag">Layer 02</span>
-            <h3>Business Vision</h3>
-          </div>
-          <div class="insight-image">
-            <video class="insight-video" src="https://res.cloudinary.com/dcuswyfur/video/upload/v1778599671/CardVideo2_rhaicf.mp4"
-              muted playsinline preload="auto"></video>
-          </div>
-        </div>
-
-        <div class="insight-card bg-dark" data-video-card>
-          <div class="insight-card-content">
-            <span class="insight-tag">Layer 03</span>
-            <h3>AI-Driven System Architecture</h3>
-          </div>
-          <div class="insight-image">
-            <video class="insight-video" src="https://res.cloudinary.com/dcuswyfur/video/upload/v1778599670/CardVideo3_e4432n.mp4"
-              muted playsinline preload="auto"></video>
-          </div>
-        </div>
-
-        <div class="insight-card bg-dark" data-video-card>
-          <div class="insight-card-content">
-            <span class="insight-tag">Layer 04</span>
-            <h3>AI Tools</h3>
-          </div>
-          <div class="insight-image">
-            <video class="insight-video" src="https://res.cloudinary.com/dcuswyfur/video/upload/v1778599673/CardVideo4_nl6x3c.mp4"
-              muted playsinline preload="auto"></video>
-          </div>
-        </div>
-
-      </div>
-
       <div class="editorial-card">
         <div class="editorial-card-content">
           <span class="insight-tag">Methodology</span>
@@ -2225,11 +2282,11 @@
               <div class="pw-invest-note">No commitment required. Just clarity.</div>
             </div>
           </div>
-          <div class="pw-image" style="background-image: url('https://res.cloudinary.com/dcuswyfur/image/upload/v1778766642/Step01_hsz50r.png'); background-size: cover; background-position: center;"></div>
+          <div class="pw-image" style="background-image: url('https://res.cloudinary.com/dcuswyfur/image/upload/v1781097421/01111_ijxk5e.png'); background-size: cover; background-position: center;"></div>
         </div>
 
         <div class="pw-step">
-          <div class="pw-image" style="background-image: url('https://res.cloudinary.com/dcuswyfur/image/upload/v1778766642/Step02_t8py9l.png'); background-size: cover; background-position: center;"></div>
+          <div class="pw-image" style="background-image: url('https://res.cloudinary.com/dcuswyfur/image/upload/v1781097421/02222_u3lcqe.png'); background-size: cover; background-position: center;"></div>
           <div class="pw-content">
             <div class="pw-num">
               <span class="step-eyebrow">Step</span>
@@ -2273,7 +2330,7 @@
               <div class="pw-invest-note">Where structural change happens.</div>
             </div>
           </div>
-          <div class="pw-image" style="background-image: url('https://res.cloudinary.com/dcuswyfur/image/upload/v1778766642/Step03_l59ecl.png'); background-size: cover; background-position: center;"></div>
+          <div class="pw-image" style="background-image: url('https://res.cloudinary.com/dcuswyfur/image/upload/v1781097420/03333_eejfc8.webp'); background-size: cover; background-position: center;"></div>
         </div>
 
       </div>
@@ -2313,7 +2370,7 @@
 
       <div class="final-bridge">
         <p>Already know your operations need attention and want to talk through what that looks&nbsp;like?</p>
-        <a href="#" class="btn btn-secondary">Book a Session. Find Your Next Best Move.</a>
+        <a href="#" class="btn btn-primary btn-cta-strong">Book a Session. Find Your Next Best Move.<span class="arrow-icon">→</span></a>
       </div>
 
       <div class="closing-line">
