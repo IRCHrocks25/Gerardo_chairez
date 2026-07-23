@@ -1810,7 +1810,9 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width: 1024px) {
     .container, .container-wide, .nav-inner { padding: 0 32px; }
-    .nav-inner { padding: 16px 32px; }
+    .nav-inner { padding: 16px 32px; flex-wrap: wrap; gap: 16px 40px; }
+    .nav-cta { flex-basis: 100%; justify-content: center; order: 3; }
+    .nav-links.is-open ~ .nav-cta { display: none; }
     .hero-grid, .intro-grid, .founder-grid, .outcomes-cols,
     .footer-top, .lead-tools, .framework-grid {
       grid-template-columns: 1fr;
