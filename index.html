@@ -1810,7 +1810,11 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width: 1024px) {
     .container, .container-wide, .nav-inner { padding: 0 32px; }
-    .nav-inner { padding: 16px 32px; flex-wrap: wrap; gap: 16px 40px; }
+    .nav-inner { padding: 28px 32px 16px; flex-wrap: wrap; gap: 16px 40px; }
+    .nav-left { width: 100%; gap: 2%; }
+    .nav-left .brand { flex: 0 0 74%; max-width: 74%; }
+    .nav-left .nav-toggle { flex: 0 0 24%; max-width: 24%; width: auto; align-items: center; }
+    .nav-left .nav-toggle span { width: 22px; }
     .nav-cta { flex-basis: 100%; justify-content: center; order: 3; }
     .nav-links.is-open ~ .nav-cta { display: none; }
     .hero-grid, .intro-grid, .founder-grid, .outcomes-cols,
