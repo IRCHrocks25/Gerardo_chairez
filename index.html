@@ -87,6 +87,7 @@
     align-items: center;
     gap: 40px;
   }
+  .nav-left { display: flex; align-items: center; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy); }
   .brand-mark {
     width: 36px; height: 36px;
@@ -137,6 +138,7 @@
   .nav-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
   .nav-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile-cta { display: none; }
 
   /* ============ BUTTONS ============ */
   .btn {
@@ -1843,6 +1845,21 @@
     .nav-links.is-open { display: flex; }
     .nav-links li { width: 100%; }
     .nav-links a { display: block; padding: 18px 32px; border-bottom: 1px solid var(--line); }
+    .nav-mobile-cta { display: block; padding: 20px 32px; }
+    .nav-mobile-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 22px;
+      background: var(--navy);
+      color: white;
+      font-weight: 600;
+      border-bottom: none;
+      transition: background 0.2s;
+    }
+    .nav-mobile-cta a:hover { background: var(--orange); }
     nav.top-nav { position: sticky; }
     .founder-portrait-wrap { position: relative; top: 0; }
     .founder-portrait { aspect-ratio: 5/4; }
@@ -1953,22 +1970,30 @@
 <!-- ============ NAV ============ -->
 <nav class="top-nav">
   <div class="nav-inner">
-    <a href="#" class="brand">
-      <img src="https://cdn.katalyst-crm.com/t1/cloudinary/Vaisa_qideaw.svg" alt="VAISA" style="height: 32px; width: auto; display: block;">
-    </a>
+    <div class="nav-left">
+      <a href="#" class="brand">
+        <img src="https://cdn.katalyst-crm.com/t1/cloudinary/Vaisa_qideaw.svg" alt="VAISA" style="height: 32px; width: auto; display: block;">
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#founder">About</a></li>
       <li><a href="#framework">Framework</a></li>
       <li><a href="#pathway">Pathway</a></li>
       <li><a href="#final">Free Tools</a></li>
+      <li class="nav-mobile-cta">
+        <a href="#final">
+          Book a Session
+          <span class="arrow-icon">→</span>
+        </a>
+      </li>
     </ul>
     <a href="#final" class="nav-cta">
       Book a Session
       <span class="arrow-icon">→</span>
     </a>
-    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </nav>
 
